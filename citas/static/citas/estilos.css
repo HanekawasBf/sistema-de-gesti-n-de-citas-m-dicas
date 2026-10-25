@@ -1,0 +1,135 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+    line-height: 1.5;
+}
+
+/*Encabezado*/
+header {
+    background-color: #1565c0;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+/*Menú de navegación*/
+nav {
+    background-color: #0d47a1;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 20px;
+}
+
+nav a:hover {
+    background-color: #1976d2;
+}
+
+/*Contenido principal*/
+main {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0 15px;
+    min-height: 60vh;
+}
+
+main a {
+    color: #1565c0;
+}
+
+/*Tarjeta (detalle del paciente)*/
+.tarjeta {
+    background-color: white;
+    padding: 15px 20px;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+    margin-bottom: 20px;
+}
+
+/*Tablas*/
+.tabla-contenedor {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+    background-color: #1565c0;
+    color: white;
+}
+
+tbody tr:hover {
+    background-color: #f1f7fd;
+}
+
+/*Etiquetas de estado*/
+.estado {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: white;
+}
+
+.estado.pendiente {
+    background-color: #f9a825;
+}
+
+.estado.confirmada {
+    background-color: #2e7d32;
+}
+
+.estado.cancelada {
+    background-color: #c62828;
+}
+
+/*Pie de página */
+footer {
+    background-color: #263238;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+footer p {
+    margin: 0;
+}
+
+
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    th, td {
+        padding: 8px 10px;
+        font-size: 0.9em;
+    }
+}

@@ -1,0 +1,36 @@
+{% extends 'citas/base.html' %}
+
+{% block titulo %}Citas pendientes{% endblock %}
+
+{% block contenido %}
+    <h2>Citas pendientes</h2>
+
+    <div class="tabla-contenedor">
+        <table>
+            <thead>
+                <tr>
+                    <th>Paciente</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Motivo</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cita in citas %}
+                <tr>
+                    <td>{{ cita.paciente }}</td>
+                    <td>{{ cita.fecha }}</td>
+                    <td>{{ cita.hora }}</td>
+                    <td>{{ cita.motivo }}</td>
+                    <td><span class="estado {{ cita.estado|lower }}">{{ cita.estado }}</span></td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5">No hay citas pendientes.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
