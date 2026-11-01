@@ -5,6 +5,8 @@
 {% block contenido %}
     <h2>Listado general de citas</h2>
 
+    <p><a href="{% url 'nueva_cita' %}" class="boton">+ Programar cita</a></p>
+
     <div class="tabla-contenedor">
         <table>
             <thead>
@@ -14,6 +16,7 @@
                     <th>Hora</th>
                     <th>Motivo</th>
                     <th>Estado</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,10 +27,26 @@
                     <td>{{ cita.hora }}</td>
                     <td>{{ cita.motivo }}</td>
                     <td><span class="estado {{ cita.estado|lower }}">{{ cita.estado }}</span></td>
+                    <td class="acciones">
+                        <a href="{% url 'editar_cita' cita.id %}" class="boton secundario">Editar</a>
+
+                        {% if cita.estado != 'Cancelada' %}
+                        <form method="post" action="{% url 'cancelar_cita' cita.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="boton">Cancelar</button>
+                        </form>
+                        {% endif %}
+
+                        <form method="post" action="{% url 'eliminar_cita' cita.id %}"
+                              onsubmit="return confirm('¿Eliminar esta cita definitivamente?');">
+                            {% csrf_token %}
+                            <button type="submit" class="boton peligro">Eliminar</button>
+                        </form>
+                    </td>
                 </tr>
                 {% empty %}
                 <tr>
-                    <td colspan="5">No hay citas registradas.</td>
+                    <td colspan="6">No hay citas registradas.</td>
                 </tr>
                 {% endfor %}
             </tbody>

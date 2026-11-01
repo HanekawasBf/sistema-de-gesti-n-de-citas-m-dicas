@@ -20,6 +20,12 @@
     </nav>
 
     <main>
+        {% if messages %}
+            {% for mensaje in messages %}
+                <div class="mensaje {{ mensaje.tags }}">{{ mensaje }}</div>
+            {% endfor %}
+        {% endif %}
+
         {% block contenido %}{% endblock %}
     </main>
 

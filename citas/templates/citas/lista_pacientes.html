@@ -4,6 +4,7 @@
 
 {% block contenido %}
     <h2>Pacientes registrados</h2>
+    <p><a href="{% url 'nuevo_paciente' %}" class="boton">+ Registrar paciente</a></p>
 
     <div class="tabla-contenedor">
         <table>
@@ -23,7 +24,8 @@
                     <td>{{ paciente.apellido }}</td>
                     <td>{{ paciente.edad }}</td>
                     <td>{{ paciente.telefono }}</td>
-                    <td><a href="{% url 'detalle_paciente' paciente.id %}">Ver detalle</a></td>
+                    <td><a href="{% url 'detalle_paciente' paciente.id %}">Ver detalle</a> | <a href="{% url 'editar_paciente' paciente.id %}">Editar</a>
+                    </td>
                 </tr>
                 {% empty %}
                 <tr>
